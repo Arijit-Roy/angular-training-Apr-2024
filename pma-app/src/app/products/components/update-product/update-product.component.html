@@ -1,0 +1,212 @@
+<ng-template #loadingtemplate>
+  <span>Loading....please wait</span>
+</ng-template>
+
+<ng-template #errortemplate>
+  <span>{{ errorMessage }}</span>
+</ng-template>
+
+<ng-template #norecordtemplate>
+  <span>No records....</span>
+</ng-template>
+
+<div *ngIf="requestCompleted; else loadingtemplate">
+  <div *ngIf="errorMessage == ''; else errortemplate">
+    <div class="row" *ngIf="productInfo; else norecordtemplate">
+      <div class="col-xs-12 col-md-6 col-md-6-offest-3">
+        <form
+          class="form-horizontal"
+          *ngIf="updateForm"
+          [formGroup]="updateForm"
+          (submit)="updateData()"
+        >
+          <div class="form-group">
+            <label for="productId">Id:</label>
+            <input
+              type="number"
+              id="productId"
+              class="form-control"
+              placeholder="enter product id"
+              formControlName="productId"
+              readonly
+            />
+
+            <!-- error displayer -->
+          </div>
+
+          <div class="form-group">
+            <label for="productName">Name:</label>
+            <input
+              type="text"
+              id="productName"
+              class="form-control"
+              placeholder="enter product name"
+              formControlName="productName"
+            />
+
+            <!-- error displayer -->
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                productName?.invalid &&
+                (productName?.touched || productName?.dirty)
+              "
+            >
+              <div *ngIf="productName?.errors?.['required']">
+                Enter product Name
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="productCode">Code:</label>
+            <input
+              type="text"
+              id="productCode"
+              class="form-control"
+              placeholder="enter product code"
+              formControlName="productCode"
+            />
+
+            <!-- error displayer -->
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                productCode?.invalid &&
+                (productCode?.touched || productCode?.dirty)
+              "
+            >
+              <div *ngIf="productCode?.errors?.['required']">
+                Enter product code
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <input
+              type="text"
+              id="description"
+              class="form-control"
+              placeholder="enter product description"
+              formControlName="description"
+            />
+
+            <!-- error displayer -->
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                description?.invalid &&
+                (description?.touched || description?.dirty)
+              "
+            >
+              <div *ngIf="description?.errors?.['required']">
+                Enter product description
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="releaseDate">Released On:</label>
+            <input
+              type="datetime"
+              id="releaseDate"
+              class="form-control"
+              placeholder="enter product releaseDate"
+              formControlName="releaseDate"
+            />
+
+            <!-- error displayer -->
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                releaseDate?.invalid &&
+                (releaseDate?.touched || releaseDate?.dirty)
+              "
+            >
+              <div *ngIf="releaseDate?.errors?.['required']">
+                Enter product releaseDate
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <input
+              type="number"
+              id="price"
+              class="form-control"
+              placeholder="enter product price"
+              formControlName="price"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="price?.invalid && (price?.touched || price?.dirty)"
+            >
+              <div *ngIf="price?.errors?.['required']">Enter product price</div>
+            </div>
+            <!-- error displayer -->
+          </div>
+
+          <div class="form-group">
+            <label for="starRating">Rating:</label>
+            <input
+              type="number"
+              id="starRating"
+              class="form-control"
+              placeholder="enter product rating"
+              formControlName="starRating"
+            />
+
+            <!-- error displayer -->
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                starRating?.invalid &&
+                (starRating?.touched || starRating?.dirty)
+              "
+            >
+              <div *ngIf="starRating?.errors?.['required']">
+                Enter product starRating
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="imageUrl">URL:</label>
+            <input
+              type="text"
+              id="imageUrl"
+              class="form-control"
+              placeholder="enter product url"
+              formControlName="imageUrl"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="
+                imageUrl?.invalid && (imageUrl?.touched || imageUrl?.dirty)
+              "
+            >
+              <div *ngIf="imageUrl?.errors?.['required']">
+                Enter product imageUrl
+              </div>
+            </div>
+            <!-- error displayer -->
+          </div>
+
+          <div class="container-fluid centerStyle">
+            <button
+              type="submit"
+              disable="updateForm.invalid"
+              class="btn btn-primary"
+            >
+              Submit
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-danger">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

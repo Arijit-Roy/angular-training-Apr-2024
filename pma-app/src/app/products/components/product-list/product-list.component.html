@@ -1,0 +1,29 @@
+<app-filter-product (filterValueChanged)="updateFilterText($event)" />
+<br />
+
+<div class="inline-block w-40" style="margin-top: 20px">
+  This is a list of products
+</div>
+<button class="inline-block w-auto mr-10" [routerLink]="['/products/add/']">
+  Add Product
+</button>
+
+<br />
+<div class="table" *ngIf="products && products.length">
+  <div
+    class="padding-4 border w-full"
+    *ngFor="let product of products | productsfilter : filterText"
+  >
+    <div class="inline-block w-40">{{ product.productName | uppercase }}</div>
+    <div class="inline-block w-25">{{ product.price }}</div>
+    <button
+      class="inline-block w-auto mr-10"
+      [routerLink]="['/products/view/', product.productId]"
+    >
+      See Details
+    </button>
+    <button class="inline-block w-20" (click)="deleteRow(product)">
+      Delete
+    </button>
+  </div>
+</div>

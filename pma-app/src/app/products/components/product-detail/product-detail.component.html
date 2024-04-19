@@ -1,0 +1,90 @@
+<!--<ng-template #loadertemplate>Loading...</ng-template>
+<ng-template #norecordtemplate>No Record Found</ng-template>
+<ng-template #errortemplate>{{ erroMsg }}</ng-template>
+<div *ngIf="productInfo; else norecordtemplate">
+  <h2>Details of {{ productInfo.productName }}</h2>
+  &nbsp;&nbsp;
+
+
+  <button
+    class="inline-block w-auto"
+    (click)="goToUpdate(productInfo.productId)"
+  >
+    See Details
+  </button>
+</div>-->
+
+<ng-template #loadertemplate>
+  <span>Loading...</span>
+</ng-template>
+<ng-template #errortemplate>
+  <span>{{ errorMessage }}</span>
+</ng-template>
+<ng-template #norecordtemplate>
+  <span>No record found</span>
+</ng-template>
+<div *ngIf="requestCompleted; else loadertemplate">
+  <div *ngIf="errorMessage == ''; else errortemplate">
+    <div *ngIf="productInfo; else norecordtemplate">
+      <div class="panel panel-primary">
+        <div class="panel-heading fontSize">
+          Detail: &nbsp;{{ productInfo.productName }}
+          <button
+            type="button"
+            [routerLink]="['/products/update', productInfo.productId]"
+            class="btn btn-primary"
+          >
+            Edit
+          </button>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-3">Name:&nbsp;</div>
+              <div class="col-md-6">{{ productInfo.productName }}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">Code:&nbsp;</div>
+              <div class="col-md-6">{{ productInfo.productCode }}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">Description:&nbsp;</div>
+              <div class="col-md-6">{{ productInfo.description }}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">Availability:&nbsp;</div>
+              <div class="col-md-6">{{ productInfo.releaseDate }}</div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">Price:&nbsp;</div>
+              <div class="col-md-6">
+                {{ productInfo.price | currency : "INR" }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">Rating:&nbsp;</div>
+              <div class="col-md-6">
+                {{ productInfo.starRating }}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <img
+              class="center-block img-responsive"
+              [style.width.px]="200"
+              [src]="productInfo.imageUrl"
+              alt="NA"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <button type="button" routerLink="/products" class="btn btn-primary">
+          Back
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

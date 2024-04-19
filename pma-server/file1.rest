@@ -1,0 +1,37 @@
+GET http://localhost:3400/products
+####
+GET http://localhost:3400/products/1
+
+
+####
+POST http://localhost:3400/products
+Content-Type: application/json
+
+{
+  "id": 6,
+  "productName": "Leaf Rake",
+  "productCode": "GDN-0011",
+  "releaseDate": "March 19, 2016",
+  "description": "Leaf rake with 48-inch wooden handle.",
+  "price": 19.95,
+  "starRating": 4,
+  "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+}
+
+####
+PUT http://localhost:3400/products/6
+Content-Type: application/json
+
+{
+  "productName": "Leaf Rake111",
+  "productCode": "GDN-00119000",
+  "releaseDate": "March 19, 2016",
+  "description": "Leaf rake with 48-inch wooden handle.",
+  "price": 19.95,
+  "starRating": 6.8,
+  "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
+}
+
+###
+DELETE http://localhost:3400/products/5
+Content-Type: application/json

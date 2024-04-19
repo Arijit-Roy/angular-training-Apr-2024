@@ -1,0 +1,255 @@
+<!--<form ngForm #frm="ngForm" (submit)="submit(frm)">
+  <div>
+    <label for="txtUserNameId">Username</label>
+    <input
+      type="text"
+      ngModel
+      id="txtUserNameId"
+      name="txtUserName"
+      ngModel
+      required
+      #uname="ngModel"
+    />
+    <div *ngIf="uname.errors && uname.touched">
+      <span> Enter Password </span>
+    </div>
+  </div>
+  <br />
+  <div>
+    <label for="txtPasswordId">Password</label>
+    <input
+      type="password"
+      id="txtPasswordId"
+      name="txtPassword"
+      ngModel
+      required
+      #upwd="ngModel"
+    />
+  </div>
+  <div *ngIf="upwd.errors && upwd.touched">
+    <span> Enter Password </span>
+  </div>
+  <br />
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>-->
+
+<!--<form [formGroup]="loginForm" (submit)="submit()">
+  <div>
+    <label for="txtUserNameId">Username</label>
+    <input
+      type="text"
+      id="txtUserNameId"
+      name="txtUserName"
+      formControlName="username"
+    />
+  </div>
+  <div *ngIf="uname.errors && uname.touched">
+    <span> Enter Username </span>
+  </div>
+  <br />
+  <div>
+    <label for="txtPasswordId">Password</label>
+    <input
+      type="password"
+      id="txtPasswordId"
+      name="txtPassword"
+      formControlName="password"
+    />
+  </div>
+  <div *ngIf="upwd.errors && upwd.touched">
+    <span> Enter Password </span>
+  </div>
+  <br />
+  <div>
+    <button type="submit">Submit</button>
+  </div>
+</form>-->
+
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-md-6-offest-3">
+    <form class="form-horizontal" [formGroup]="addForm" (submit)="addData()">
+      <div class="form-group">
+        <label for="productId">Id:</label>
+        <input
+          type="number"
+          id="productId"
+          class="form-control"
+          placeholder="enter product id"
+          formControlName="productId"
+        />
+
+        <!-- error displayer -->
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            productName?.invalid && (productId?.touched || productId?.dirty)
+          "
+        >
+          <div *ngIf="productId?.errors?.['required']">Enter product id</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="productName">Name:</label>
+        <input
+          type="text"
+          id="productName"
+          class="form-control"
+          placeholder="enter product name"
+          formControlName="productName"
+        />
+
+        <!-- error displayer -->
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            productName?.invalid && (productName?.touched || productName?.dirty)
+          "
+        >
+          <div *ngIf="productName?.errors?.['required']">
+            Enter product Name
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="productCode">Code:</label>
+        <input
+          type="text"
+          id="productCode"
+          class="form-control"
+          placeholder="enter product code"
+          formControlName="productCode"
+        />
+
+        <!-- error displayer -->
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            productCode?.invalid && (productCode?.touched || productCode?.dirty)
+          "
+        >
+          <div *ngIf="productCode?.errors?.['required']">
+            Enter product code
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <input
+          type="text"
+          id="description"
+          class="form-control"
+          placeholder="enter product description"
+          formControlName="description"
+        />
+
+        <!-- error displayer -->
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            description?.invalid && (description?.touched || description?.dirty)
+          "
+        >
+          <div *ngIf="description?.errors?.['required']">
+            Enter product description
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="releaseDate">Released On:</label>
+        <input
+          type="datetime"
+          id="releaseDate"
+          class="form-control"
+          placeholder="enter product releaseDate"
+          formControlName="releaseDate"
+        />
+
+        <!-- error displayer -->
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            releaseDate?.invalid && (releaseDate?.touched || releaseDate?.dirty)
+          "
+        >
+          <div *ngIf="releaseDate?.errors?.['required']">
+            Enter product releaseDate
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input
+          type="number"
+          id="price"
+          class="form-control"
+          placeholder="enter product price"
+          formControlName="price"
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="price?.invalid && (price?.touched || price?.dirty)"
+        >
+          <div *ngIf="price?.errors?.['required']">Enter product price</div>
+        </div>
+        <!-- error displayer -->
+      </div>
+
+      <div class="form-group">
+        <label for="starRating">Rating:</label>
+        <input
+          type="number"
+          id="starRating"
+          class="form-control"
+          placeholder="enter product rating"
+          formControlName="starRating"
+        />
+
+        <!-- error displayer -->
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            starRating?.invalid && (starRating?.touched || starRating?.dirty)
+          "
+        >
+          <div *ngIf="starRating?.errors?.['required']">
+            Enter product starRating
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="imageUrl">URL:</label>
+        <input
+          type="text"
+          id="imageUrl"
+          class="form-control"
+          placeholder="enter product url"
+          formControlName="imageUrl"
+        />
+
+        <!-- error displayer -->
+        <div
+          class="alert alert-danger"
+          *ngIf="imageUrl?.invalid && (imageUrl?.touched || imageUrl?.dirty)"
+        >
+          <div *ngIf="imageUrl?.errors?.['required']">
+            Enter product imageUrl
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid centerStyle">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-danger">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
